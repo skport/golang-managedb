@@ -1,0 +1,23 @@
+services:
+  db:
+    container_name: golang-managedb-mariadb
+    image: mariadb:10.8
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MARIADB_ROOT_PASSWORD: pass
+    command:
+      --query_cache_type=1
+      --query_cache_limit=16M
+      --query_cache_size=32M
+      --innodb_file_per_table=1
+      --innodb_buffer_pool_size=128M
+      --innodb_log_file_size=30MB
+    
+  adminer:
+    container_name: golang-managedb-adminer
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
