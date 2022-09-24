@@ -1,9 +1,10 @@
-golang-managedb
+# golang-managedb
 
-A example code to use ent/ent module for Go.
+A example code to use [ent/ent](https://github.com/ent/ent) entity framework for Go.
 
 ## Installation
 
+Create go.sum
 ```Shell
 go mod tidy
 ```
@@ -11,16 +12,56 @@ go mod tidy
 ## Usage
 First, create and start database container.
 
-1. Create "testdb" database.
+### 1. Create "testdb" database.
 
-2. Testing connect to database
+### 2. Testing connect to database
 ```Shell
-go run ./start/connect-db/main.go
+go run ./example/connect_db/main.go
 ```
 
-2. Testing migration tool
+### 3. Testing migration tool
+
+#### The structure of the table to create
+- user_group
+  - id : bigint auto increment (Primary Key)
+  - name :  varchar(30) not null
+  - created_at : datetime
+- user
+  - id : bigint auto increment (Primary Key)
+  - first name : varchar(30) not null
+  - last name : varchar(30) not null
+  - mail : varchar(50) not null
+  - usergroup_id : bigint not null
+  - reated_at : datetime
+
 ```Shell
-go run ./start/exec-migration/main.go
+go generate ./ent
+```
+
+```Shell
+go run ./example/exec_migration/main.go
+```
+
+### 4. Testing CURD
+
+Create (Insert):
+```Shell
+go run ./example/curd/create/main.go
+```
+
+Update:
+```Shell
+go run ./example/curd/update/main.go
+```
+
+Read (Select):
+```Shell
+go run ./example/curd/read/main.go
+```
+
+Delete:
+```Shell
+go run ./example/curd/delete/main.go
 ```
 
 ## Using Docker
@@ -49,3 +90,6 @@ Visit `http://localhost:8080/` and browse database with "adminer".
 The password is set in compose.yml.
 
 This is the easiest way to verify that the database is up and running.
+
+## ToDo
+- Clean up example codes
