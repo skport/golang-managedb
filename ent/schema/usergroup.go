@@ -16,7 +16,6 @@ type UserGroup struct {
 // Fields of the UserGroup.
 func (UserGroup) Fields() []ent.Field {
 	return []ent.Field{
-		field.Int("group_id"),
 		field.String("name").
 			SchemaType(map[string]string{
 				dialect.MySQL: "varchar(30)",

@@ -11,9 +11,16 @@ go mod tidy
 ## Usage
 First, create and start database container.
 
-Testing connect to database.
+1. Create "testdb" database.
+
+2. Testing connect to database
 ```Shell
 go run ./start/connect-db/main.go
+```
+
+2. Testing migration tool
+```Shell
+go run ./start/exec-migration/main.go
 ```
 
 ## Using Docker
