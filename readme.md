@@ -1,4 +1,5 @@
 # golang-managedb
+[![](https://img.shields.io/github/go-mod/go-version/golang/go/release-branch.go1.18?filename=src%2Fgo.mod&label=GO%20VERSION&style=for-the-badge&logo=appveyor)](https://github.com/golang/go/releases/tag/go1.18)
 
 A example code to use [ent/ent](https://github.com/ent/ent) entity framework for Go.
 
